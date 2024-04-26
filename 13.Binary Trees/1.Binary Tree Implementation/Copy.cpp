@@ -1,0 +1,67 @@
+#include<iostream>
+#include<climits>
+#include<vector>
+#include<string>
+#include<set>
+#include<unordered_map>
+#include<algorithm>
+using namespace std;
+
+
+class Node{
+   
+     public:
+     int data ;
+     Node* left;
+     Node* right;
+
+     public:
+     // constructor
+     Node(int data){
+        this -> data = data;
+        this -> left = NULL;
+        this->right = NULL;
+     }
+};
+
+//1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1 
+Node * BuildTree(Node* root){
+
+    cout<<"Enter the data "<<endl;
+    int data;
+    cin>>data;
+
+    root = new Node(data);
+
+    if(data == -1){
+        return NULL;
+    }
+
+    cout<<"enter the data for the left node of tree :"<<data <<endl;
+
+    root -> left = BuildTree(root -> left );
+
+    cout<<"enter the data for the right node of tree : "<<data<<endl;
+
+    root -> right = BuildTree(root ->right);
+
+   return root;
+
+
+}
+
+/*
+Reason: in cases for eg. when we have only right subtree then when we will first traverse left it will store all
+the nodes right to root tree (considering we are passing root only in traverse left and not storing root node 
+prior to it ) so when we traerse right it will again store all the nodes in reverse order so there is duplicate printing 
+so to avoid this what we will do is store root in the first place then call traverse left fucntion for left node and because we have
+already stored root node so if we call the traverse leaf function with passing root in it then it will store the root element twice in some cases to 
+avoid this what we will do is find leaf nodes for left and right part seperately and then after will call our traverse right which will eventualy complete our output 
+*/
+
+int main(){
+
+    
+    
+
+}
